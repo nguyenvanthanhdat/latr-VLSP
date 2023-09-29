@@ -1,4 +1,4 @@
-First install necessary package by run `pip install -r requirments.txt` in root path
+First install necessary package by run `pip install -r requirements.txt` in root path
 
 # Dataset
 
