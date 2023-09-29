@@ -1,0 +1,11 @@
+data:
+  train:
+    ocr: data/TextVQA_Rosetta_OCR_v0.2_train.json
+    question: data/TextVQA_0.5.1_train.json
+  val:
+    ocr: data/TextVQA_Rosetta_OCR_v0.2_val.json
+    question: data/TextVQA_0.5.1_val.json
+  image_path: data/train_images
+
+model:
+  t5_model: t5-base
