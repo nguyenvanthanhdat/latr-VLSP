@@ -23,6 +23,8 @@ setuptools.setup(
         "torchvision",
         "pytorch_lightning",
         "transformers[torch]",
-        "randompad_sequence"
+        "SentencePiece",
+        "wandb",
+        "scikit-learn"
     ]
 )

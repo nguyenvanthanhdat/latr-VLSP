@@ -4,23 +4,25 @@ import pandas as pd
 import copy
 from tqdm.auto import tqdm
 
-config_data = ConfigurationManager().config.data
+# config_data = ConfigurationManager().config.data
 # print(config_data)
 tqdm.pandas()
 
 class preprocess():
+    def __init__(self, config_data):
+        self.config_data = config_data
     def create_dict_df(self) -> dict:
 
         dict_data = {
-            'train': self.read2df(config_data.train),
-            'val': self.read2df(config_data.val)
+            'train': self.read2df(self.config_data.train),
+            'val': self.read2df(self.config_data.val)
         }
 
         # check file name in dataframe exist or not
         ## train dataframe
         dict_data['train']['question']['path_exists'] = dict_data[
             'train']['question']['image_id'].progress_apply(
-            lambda x: os.path.exists(os.path.join(config_data.image_path, x)+'.jpg'))
+            lambda x: os.path.exists(os.path.join(self.config_data.image_path, x)+'.jpg'))
 
         dict_data['train']['question'] = dict_data['train']['question'][
             dict_data['train']['question']['path_exists']==True]
@@ -28,7 +30,7 @@ class preprocess():
         ## validation dataframe
         dict_data['val']['question']['path_exists'] = dict_data[
             'val']['question']['image_id'].progress_apply(
-            lambda x: os.path.exists(os.path.join(config_data.image_path, x)+'.jpg'))
+            lambda x: os.path.exists(os.path.join(self.config_data.image_path, x)+'.jpg'))
 
         dict_data['val']['question'] = dict_data['val']['question'][
             dict_data['val']['question']['path_exists']==True]

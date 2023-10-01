@@ -1,10 +1,12 @@
-from preprocess import preprocess
+from src.LaTr.data.preprocess import preprocess
 from tqdm.auto import tqdm
 
-data_dict = preprocess().create_dict_df()
-print(data_dict.keys())
+# data_dict = preprocess().create_dict_df()
+# print(data_dict.keys())
 
 class encoding():
+    # data_dict = preprocess().create_dict_df()
+
     def label2id(self, data_dict):
         label2id = {}   ## Would be responsible for mapping answer to token
         current_word_id = 1
@@ -25,7 +27,7 @@ class encoding():
         id2label = ["" for _ in range(current_word_id)]
         for key, value in list(label2id.items()):
             id2label[value['id']] = key
-        
-        return id2label
+        # return id2label, current_word_id
+        return label2id, id2label, current_word_id
 
-a = encoding().label2id(data_dict=data_dict)
+# a = encoding().label2id(data_dict=data_dict)
